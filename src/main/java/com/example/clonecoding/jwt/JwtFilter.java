@@ -1,6 +1,7 @@
 package com.example.clonecoding.jwt;
 
-import com.example.clonecoding.dto.response.ResponseDto;
+import com.example.clonecoding.dto.ResponseDto;
+import com.example.clonecoding.model.ErrorCode;
 import com.example.clonecoding.service.UserDetailsServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
@@ -62,7 +63,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 response.setContentType("application/json;charset=UTF-8");
                 response.getWriter().println(
                         new ObjectMapper().writeValueAsString(
-                                ResponseDto.isFail("Token이 유효햐지 않습니다.")
+                                new ResponseDto<>(null, ErrorCode.BAD_TOKEN_REQUEST)
                         )
                 );
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
