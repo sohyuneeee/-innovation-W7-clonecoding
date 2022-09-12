@@ -43,13 +43,17 @@ public class MainHomeService {
                 String title = element.getElementsByAttributeValue("class", "course_title").text();
                 String instructor = element.getElementsByAttributeValue("class", "instructor").text();
                 String originPrice = element.getElementsByAttributeValue("class", "price").text();
+                String[] priceList = originPrice.split(" ");
+                String discountPrice = "";
                 //price에서 원가부분만 자르기
                 if (originPrice.equals("무료")) {
                     originPrice = "무료";
                 } else {
-                    originPrice = originPrice.substring(0, 6);
+                    originPrice = priceList[0];
+                    if (priceList.length == 2) {
+                        discountPrice = priceList[1];
+                    }
                 }
-                String discountPrice = element.getElementsByAttributeValue("class", "pay_price").text();
                 String description = element.getElementsByAttributeValue("class", "course_description").text();
                 String level = element.getElementsByAttributeValue("class", "course_level").text();
                 String skill = element.getElementsByAttributeValue("class", "course_skills").text();
