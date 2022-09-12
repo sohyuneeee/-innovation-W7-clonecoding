@@ -18,23 +18,34 @@ public class MainLecture {
 
     @NotNull
     @Column
-    private String lectureImg;
+    private String frontLectureImg;
 
     @NotNull
     @Column
-    private String title;
+    private String frontLectureTitle;
 
     @NotNull
     @Column
-    private String instructor;
+    private String frontInstructor;
 
     @Column
-    private String star;
+    private String frontOriginPrice;
 
     @Column
-    private String originPrice;
+    private String frontDiscountPrice;
 
     @Column
-    private String discountPrice;
+    private String backLectureTitle;
+
+
+    @Column(length = 500)
+    private String backDescription;
+
+    @Column
+    private String backLevel;
+
+    @Column
+    private String backSkill;
+
 
 }

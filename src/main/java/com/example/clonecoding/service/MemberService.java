@@ -1,10 +1,13 @@
 package com.example.clonecoding.service;
 
+import com.example.clonecoding.dto.ResponseDto;
+import com.example.clonecoding.dto.response.MemberResponseDto;
 import com.example.clonecoding.jwt.TokenDto;
 import com.example.clonecoding.dto.request.MemberRequestDto;
-import com.example.clonecoding.dto.response.ResponseDto;
+
 import com.example.clonecoding.jwt.TokenProvider;
 import com.example.clonecoding.model.Authority;
+import com.example.clonecoding.model.ErrorCode;
 import com.example.clonecoding.model.Member;
 import com.example.clonecoding.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,29 +31,31 @@ public class MemberService {
     public ResponseDto<?> createMember(MemberRequestDto requestDto) {
 
         if(!memberRepository.findByEmail(requestDto.getEmail()).isEmpty()) {
-            return ResponseDto.isFail("이미 가입한 이메일 입니다.");
+            return new ResponseDto<>(null, ErrorCode.DUPLICATED_EMAIL);
         }
+        String[] nickname = requestDto.getEmail().split("@");
 
         Member member = Member.builder()
                 .email(requestDto.getEmail())
+                .nickname(nickname[0])
                 .password(passwordEncoder.encode(requestDto.getPassword()))
                 .authority(Authority.ROLE_USER)
                 .build();
 
         memberRepository.save(member);
 
-        return ResponseDto.isSuccess("회원가입 완료");
+        return new ResponseDto<>("회원가입 완료");
     }
 
     public ResponseDto<?> loginMember(MemberRequestDto requestDto, HttpServletResponse response) {
         Member member = isPresentMember(requestDto.getEmail());
 
         if(null == member) {
-            return ResponseDto.isFail("이메일 또는 비밀번호를 확인해주세요.");
+            return new ResponseDto<>(null,ErrorCode.EMAIL_NOT_FOUND);
         }
 
         if(!member.validatePassword(passwordEncoder, requestDto.getPassword())) {
-            return ResponseDto.isFail("이메일 또는 비밀번호를 확인해주세요.");
+            return new ResponseDto<>(null,ErrorCode.PASSWORDS_NOT_MATCHED);
         }
 
         TokenDto tokenDto = tokenProvider.generateTokenDto(member);
@@ -58,18 +63,21 @@ public class MemberService {
         response.addHeader("Refresh-Token", tokenDto.getRefreshToken());
         response.addHeader("Access-Token-Expire-Time", tokenDto.getAccessTokenExpiresIn().toString());
 
-        Authority authority = member.getAuthority();
-        String[] nickname = member.getEmail().split("@");
-        return ResponseDto.isSuccess(authority+" / "+nickname[0]);
+        MemberResponseDto responseDto = MemberResponseDto.builder()
+                .id(member.getId())
+                .nickname(member.getNickname())
+                .authority(member.getAuthority()).build();
+
+        return new ResponseDto<>(responseDto);
     }
 
     public ResponseDto<?> logoutMember(HttpServletRequest request) {
         if (!tokenProvider.validateToken(request.getHeader("Refresh-Token"))) {
-            return ResponseDto.isFail("Token이 유효하지 않습니다.");
+            return new ResponseDto<>(null, ErrorCode.BAD_TOKEN_REQUEST);
         }
         Member member = tokenProvider.getMemberFromAuthentication();
         if (null == member) {
-            return ResponseDto.isFail("사용자를 찾을 수 없습니다.");
+            return new ResponseDto<>(null, ErrorCode.MEMBER_NOT_FOUND);
         }
 
         return tokenProvider.deleteRefreshToken(member);
