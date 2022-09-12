@@ -1,20 +1,17 @@
 package com.example.clonecoding.service;
 
-import com.example.clonecoding.dto.LectureRequestDto;
-import com.example.clonecoding.dto.LectureResponseDto;
 import com.example.clonecoding.model.Lecture;
 import com.example.clonecoding.repository.LectureRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class LectureService {
+public class SearchService {
 
     private final LectureRepository lectureRepository;
 

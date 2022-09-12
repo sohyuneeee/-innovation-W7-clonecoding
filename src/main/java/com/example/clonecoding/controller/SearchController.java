@@ -1,11 +1,9 @@
 package com.example.clonecoding.controller;
 
-import com.example.clonecoding.dto.LectureRequestDto;
-import com.example.clonecoding.dto.LectureResponseDto;
 import com.example.clonecoding.dto.ResponseDto;
 import com.example.clonecoding.model.ErrorCode;
 import com.example.clonecoding.model.Lecture;
-import com.example.clonecoding.service.LectureService;
+import com.example.clonecoding.service.SearchService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -16,9 +14,9 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-public class LectureController {
+public class SearchController {
 
-    private final LectureService lectureService;
+    private final SearchService lectureService;
 
     @GetMapping("api/search")
     public ResponseDto<List<Lecture>> searchLecture(@RequestParam(value = "keyword") String keyword) {
