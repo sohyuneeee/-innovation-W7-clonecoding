@@ -27,8 +27,8 @@ public class MemberService {
 
     public ResponseDto<?> createMember(MemberRequestDto requestDto) {
 
-        if(null != memberRepository.findByEmail(requestDto.getEmail())) {
-            return ResponseDto.isFail("이미 가입된 이메일 주소 입니다.");
+        if(!memberRepository.findByEmail(requestDto.getEmail()).isEmpty()) {
+            return ResponseDto.isFail("이미 가입한 이메일 입니다.");
         }
 
         Member member = Member.builder()
