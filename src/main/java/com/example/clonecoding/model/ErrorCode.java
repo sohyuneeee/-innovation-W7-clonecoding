@@ -15,14 +15,15 @@ public enum ErrorCode {
 
     TOKEN_NOT_FOUND("TOKEN_NOT_FOUND", "존재하지 않는 Token 입니다."),
 
-    DUPLICATED_EMAIL("DUPLICATED_EMAIL", "중복된 이메일 입니다."),
+    DUPLICATED_EMAIL("DUPLICATED_EMAIL", "이미 가입한 이메일 입니다."),
 
     DUPLICATED_NICKNAME("DUPLICATED_NICKNAME","중복된 닉네임 입니다."),
 
+    EMAIL_NOT_FOUND("EMAIL_NOT_FOUND", "이메일 또는 비밀번호를 확인해주세요."),
+
     MEMBER_NOT_FOUND("MEMBER_NOT_FOUND", "사용자를 찾을 수 없습니다."),
 
-
-    PASSWORDS_NOT_MATCHED("PASSWORDS_NOT_MATCHED", "비밀번호와 비밀번호 확인이 일치하지 않습니다."),
+    PASSWORDS_NOT_MATCHED("PASSWORDS_NOT_MATCHED", "이메일 또는 비밀번호를 확인해주세요."),
 
 
     NOT_SAME_MEMBER("NOT_SAME_MEMBER", "해당 작성자만 수정이 가능합니다."),
