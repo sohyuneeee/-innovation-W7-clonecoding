@@ -43,6 +43,7 @@ public class SecurityConfig {
                 .antMatchers("/api/lecture/**").permitAll()
                 .antMatchers("/api/search/**").permitAll()
                 .antMatchers("/api/banner/**").permitAll()
+                .antMatchers("/api/review/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtSecurityConfig(SECRET_KEY, tokenProvider, userDetailsService));
