@@ -40,7 +40,11 @@ public class SecurityConfig {
                 .antMatchers("/api/lecture/**").permitAll()
                 .antMatchers("/api/search/**").permitAll()
                 .antMatchers("/api/banner/**").permitAll()
+                .antMatchers("/loginForm").permitAll()
                 .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/loginForm")
                 .and()
                 .apply(new JwtSecurityConfig(SECRET_KEY, tokenProvider, userDetailsService));
         return http.build();
