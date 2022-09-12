@@ -19,6 +19,9 @@ public class Review extends Timestamped {
     private String content;
 
     @Column(nullable = false)
+    private String nickname;
+
+    @Column(nullable = false)
     private int star;
 
     @JoinColumn(name = "lecture_id", nullable = false)
@@ -34,6 +37,7 @@ public class Review extends Timestamped {
         this.star = requestDto.getStar();
         this.member = member;
         this.lecture = lecture;
+        this.nickname = member.getNickname();
     }
 
     public void update(ReviewRequestDto requestDto) {

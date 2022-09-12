@@ -16,12 +16,13 @@ public class ReviewResponseDto {
 
     private Long id;
     private String content;
+    private String nickname;
     private int star;
     private LocalDateTime createdAt;
 
     public ReviewResponseDto(Review review) {
         this.id = review.getId();
-//        this.nickname = review.getNickname();
+        this.nickname = review.getNickname();
         this.content= review.getContent();
         this.star = review.getStar();
         this.createdAt = review.getCreatedAt();
