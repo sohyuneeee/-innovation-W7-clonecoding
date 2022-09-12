@@ -1,6 +1,6 @@
 package com.example.clonecoding.model;
 
-import com.example.clonecoding.dto.LectureRequestDto;
+import com.example.clonecoding.dto.request.LectureRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

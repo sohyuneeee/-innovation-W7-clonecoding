@@ -1,9 +1,9 @@
-package com.example.clonecoding.inflearn.main.service;
+package com.example.clonecoding.service;
 
-import com.example.clonecoding.inflearn.main.domain.MainLecture;
-import com.example.clonecoding.inflearn.main.dto.MainBannerDto;
-import com.example.clonecoding.inflearn.main.dto.MainLectureDto;
-import com.example.clonecoding.inflearn.main.repository.MainHomeRepository;
+import com.example.clonecoding.model.MainLecture;
+import com.example.clonecoding.dto.MainBannerDto;
+import com.example.clonecoding.dto.MainLectureDto;
+import com.example.clonecoding.repository.MainHomeRepository;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

@@ -18,7 +18,7 @@ public class SearchController {
 
     private final SearchService lectureService;
 
-    @GetMapping("api/search")
+    @GetMapping("/api/search")
     public ResponseDto<List<Lecture>> searchLecture(@RequestParam(value = "keyword") String keyword) {
         List<Lecture> lectures;
         try {

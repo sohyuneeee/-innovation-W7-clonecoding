@@ -1,4 +1,4 @@
-package com.example.clonecoding.inflearn.main.dto;
+package com.example.clonecoding.dto;
 
 import lombok.*;
 

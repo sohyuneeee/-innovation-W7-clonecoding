@@ -1,6 +1,6 @@
-package com.example.clonecoding.inflearn.main.repository;
+package com.example.clonecoding.repository;
 
-import com.example.clonecoding.inflearn.main.domain.MainLecture;
+import com.example.clonecoding.model.MainLecture;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MainHomeRepository extends JpaRepository<MainLecture, String> {

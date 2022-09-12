@@ -1,4 +1,4 @@
-package com.example.clonecoding.dto;
+package com.example.clonecoding.dto.request;
 
 
 

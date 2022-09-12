@@ -1,4 +1,4 @@
-package com.example.clonecoding.dto;
+package com.example.clonecoding.dto.response;
 
 import com.example.clonecoding.model.Lecture;
 import lombok.Getter;

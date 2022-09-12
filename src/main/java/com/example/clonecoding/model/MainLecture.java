@@ -1,4 +1,4 @@
-package com.example.clonecoding.inflearn.main.domain;
+package com.example.clonecoding.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,21 +11,30 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Builder
 @Entity
-public class MainBanner {
+public class MainLecture {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
     @NotNull
     @Column
-    private String bannerImg;
+    private String lectureImg;
 
     @NotNull
     @Column
-    private String bannerTitle;
+    private String title;
 
     @NotNull
     @Column
-    private String bannerText;
+    private String instructor;
+
+    @Column
+    private String star;
+
+    @Column
+    private String originPrice;
+
+    @Column
+    private String discountPrice;
 
 }

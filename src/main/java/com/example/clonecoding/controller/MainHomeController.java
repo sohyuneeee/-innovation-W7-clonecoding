@@ -1,9 +1,9 @@
-package com.example.clonecoding.inflearn.main.controller;
+package com.example.clonecoding.controller;
 
 
-import com.example.clonecoding.inflearn.main.service.MainHomeService;
-import com.example.clonecoding.inflearn.main.dto.MainBannerDto;
-import com.example.clonecoding.inflearn.main.dto.MainLectureDto;
+import com.example.clonecoding.service.MainHomeService;
+import com.example.clonecoding.dto.MainBannerDto;
+import com.example.clonecoding.dto.MainLectureDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,12 +17,12 @@ public class MainHomeController {
 
     private final MainHomeService mainHomeService;
 
-    @GetMapping("/inflean/home")
+    @GetMapping("/api/lecture")
     private List<MainLectureDto> getHomeList(HttpServletRequest request){
         return mainHomeService.getHomeList();
     }
 
-    @GetMapping("/inflean/banner")
+    @GetMapping("/api/banner")
     private List<MainBannerDto> getbannerList(HttpServletRequest request){
         return mainHomeService.getbannerList();
     }
