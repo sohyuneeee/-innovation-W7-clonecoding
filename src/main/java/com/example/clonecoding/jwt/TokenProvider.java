@@ -1,10 +1,8 @@
 package com.example.clonecoding.jwt;
 
-import com.example.clonecoding.dto.response.ResponseDto;
-import com.example.clonecoding.model.Authority;
-import com.example.clonecoding.model.Member;
-import com.example.clonecoding.model.RefreshToken;
-import com.example.clonecoding.model.UserDetailsImpl;
+
+import com.example.clonecoding.dto.ResponseDto;
+import com.example.clonecoding.model.*;
 import com.example.clonecoding.repository.RefreshTokenRepository;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -108,9 +106,9 @@ public class TokenProvider {
     public ResponseDto<?> deleteRefreshToken(Member member) {
         RefreshToken refreshToken = isPresentRefreshToken(member);
         if (null == refreshToken) {
-            return ResponseDto.isFail("존재하지 않는 Token 입니다.");
+            return new ResponseDto<>(null, ErrorCode.TOKEN_NOT_FOUND);
         }
         refreshTokenRepository.delete(refreshToken);
-        return ResponseDto.isSuccess("성공적으로 로그아웃하였습니다.");
+        return new ResponseDto<>("성공적으로 로그아웃하였습니다.");
     }
 }

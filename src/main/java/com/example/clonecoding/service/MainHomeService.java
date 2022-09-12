@@ -1,7 +1,7 @@
 package com.example.clonecoding.service;
 
-import com.example.clonecoding.model.MainLecture;
 import com.example.clonecoding.dto.MainBannerDto;
+import com.example.clonecoding.model.MainLecture;
 import com.example.clonecoding.dto.MainLectureDto;
 import com.example.clonecoding.repository.MainHomeRepository;
 import lombok.RequiredArgsConstructor;
