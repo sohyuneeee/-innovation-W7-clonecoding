@@ -1,7 +1,6 @@
 package com.example.clonecoding.model;
 
 import com.example.clonecoding.dto.LectureRequestDto;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,27 +15,19 @@ public class Lecture {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     private String title;
-
 
     private String lecturer;
 
-
     private int price;
-
 
     private String imageFile;
 
-
     private String description;
-
 
     private int star;
 
-
     private String reviewCnt;
-
 
     public Lecture(LectureRequestDto requestDto) {
         this.title = requestDto.getTitle();

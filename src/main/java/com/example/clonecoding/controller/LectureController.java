@@ -20,6 +20,23 @@ public class LectureController {
 
     private final LectureService lectureService;
 
+    @GetMapping("api/search")
+    public ResponseDto<List<Lecture>> searchLecture(@RequestParam(value = "keyword") String keyword) {
+        List<Lecture> lectures;
+        try {
+            lectures = lectureService.searchLecture(keyword);
+        }catch (EntityNotFoundException e){
+            log.error(e.getMessage());
+            return new ResponseDto<>(null, ErrorCode.ENTITY_NOT_FOUND);
+        }catch (Exception e){
+            log.error(e.getMessage());
+            return new ResponseDto<>(null,ErrorCode.INVALID_ERROR);
+        }
+
+        return new ResponseDto<>(lectures);
+
+    }
+
 
 //    @PostMapping("api/lecture")
 //    public ResponseDto<LectureResponseDto> createLecture(@RequestBody LectureRequestDto requestDto) {
@@ -36,9 +53,5 @@ public class LectureController {
 //        return new ResponseDto<>(lectureResponseDto);
 //    }
 
-    @GetMapping("api/search")
-    public List<Lecture> searchLecture(@RequestParam(value = "keyword") String keyword) {
-        return lectureService.searchLecture(keyword);
-    }
 
 }
