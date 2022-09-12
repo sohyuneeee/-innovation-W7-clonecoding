@@ -1,5 +1,6 @@
 package com.example.clonecoding.service;
 
+import com.example.clonecoding.dto.MainBannerDto;
 import com.example.clonecoding.model.MainLecture;
 import com.example.clonecoding.dto.MainLectureDto;
 import com.example.clonecoding.repository.MainHomeRepository;
@@ -85,36 +86,38 @@ public class MainHomeService {
     }
 
     //메인화면 배너리스트
-//    public List<MainBannerDto> getbannerList() {
-//        MainBannerDto bannerDto = new MainBannerDto();
-//        String URL = "https://www.inflearn.com";
-//        Document doc = null;
-//        try {
-//            doc = Jsoup.connect(URL).get();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        Elements bannerTable = doc.getElementsByAttributeValue("class","scene swiper-slide e-marketing-cls");
-//        List<MainBannerDto> bannerList = new ArrayList<>();
-//        String bannerImg; //이미지
-//        String bannerTitle;//타이틀
-//        String bannerText; //텍스트
-//
-//        for (Element element : bannerTable) {
-//            bannerImg = element.getElementsByAttributeValue("class", "banner-pc-image").attr("src");
-//            bannerTitle = element.getElementsByAttributeValue("class", "admin_hero_title title is-3 bold").text();
-//            bannerText = element.getElementsByAttributeValue("class", "text is-1").text();
-//
-//            try {
-//                bannerList.add(MainBannerDto.builder()
-//                        .bannerImg(bannerImg)
-//                        .bannerTitle(bannerTitle)
-//                        .bannerText(bannerText)
-//                        .build());
-//            } catch (Exception e) {
-//                e.getStackTrace();
-//            }
-//        }
+    public List<MainBannerDto> getbannerList() {
+        MainBannerDto bannerDto = new MainBannerDto();
+        String URL = "https://www.inflearn.com";
+        Document doc = null;
+        try {
+            doc = Jsoup.connect(URL).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Elements bannerTable = doc.getElementsByAttributeValue("class", "scene swiper-slide e-marketing-cls");
+        List<MainBannerDto> bannerList = new ArrayList<>();
+        String bannerImg; //이미지
+        String bannerTitle;//타이틀
+        String bannerText; //텍스트
+
+        for (Element element : bannerTable) {
+            bannerImg = element.getElementsByAttributeValue("class", "banner-pc-image").attr("src");
+            bannerTitle = element.getElementsByAttributeValue("class", "admin_hero_title title is-3 bold").text();
+            bannerText = element.getElementsByAttributeValue("class", "text is-1").text();
+
+            try {
+                bannerList.add(MainBannerDto.builder()
+                        .bannerImg(bannerImg)
+                        .bannerTitle(bannerTitle)
+                        .bannerText(bannerText)
+                        .build());
+            } catch (Exception e) {
+                e.getStackTrace();
+            }
+        }
+        return bannerList;
+    }
 }
 

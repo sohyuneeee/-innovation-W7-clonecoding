@@ -7,10 +7,13 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 public class MainLectureDto {
-    private String lectureImg;
-    private String title;
-    private String instructor;
-    private String star;
-    private String originPrice;
-    private String discountPrice;
+    private String frontLectureImg;
+    private String frontLectureTitle;
+    private String frontInstructor;
+    private String frontOriginPrice;
+    private String frontDiscountPrice;
+    private String backLectureTitle;
+    private String backDescription;
+    private String backLevel;
+    private String backSkill;
 }

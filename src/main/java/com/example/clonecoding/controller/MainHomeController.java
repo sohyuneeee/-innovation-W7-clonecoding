@@ -22,8 +22,8 @@ public class MainHomeController {
         return mainHomeService.getHomeList();
     }
 
-    @GetMapping("/api/banner")
-    private List<MainBannerDto> getbannerList(HttpServletRequest request){
-        return mainHomeService.getbannerList();
-    }
+//    @GetMapping("/api/banner")
+//    private List<MainBannerDto> getbannerList(HttpServletRequest request){
+//        return mainHomeService.getbannerList();
+//    }
 }
