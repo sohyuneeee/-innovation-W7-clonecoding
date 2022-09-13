@@ -34,6 +34,8 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private Authority authority;
 
+    private String provider;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

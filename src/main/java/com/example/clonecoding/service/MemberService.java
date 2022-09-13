@@ -35,7 +35,7 @@ public class MemberService {
         }
         String[] nickname = requestDto.getEmail().split("@");
 
-        Member member = Member.builder()
+        Member member = Member.builder()        //provider <- null
                 .email(requestDto.getEmail())
                 .nickname(nickname[0])
                 .password(passwordEncoder.encode(requestDto.getPassword()))

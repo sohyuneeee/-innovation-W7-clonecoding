@@ -28,7 +28,9 @@ public enum ErrorCode {
 
     NOT_SAME_MEMBER("NOT_SAME_MEMBER", "해당 작성자만 수정이 가능합니다."),
 
-    INVALID_ERROR("INVALID_ERROR", "에러 발생");
+    INVALID_ERROR("INVALID_ERROR", "에러 발생"),
+
+    USED_EMAIL("USED_EMAIL", "이미 가입한 이메일 입니다.");
 
 //  NICKNAME_NOT_EXIST("NICKNAME_NOT_EXIST", "사용자를 찾을 수 없습니다.");
 
