@@ -1,11 +1,11 @@
 package com.example.clonecoding;
 
-import com.example.clonecoding.dto.MainBannerDto;
-import com.example.clonecoding.dto.MainLectureDto;
-import com.example.clonecoding.model.MainBanner;
-import com.example.clonecoding.model.MainLecture;
-import com.example.clonecoding.repository.MainBannerRepository;
-import com.example.clonecoding.repository.MainHomeRepository;
+import com.example.clonecoding.dto.BannerDto;
+import com.example.clonecoding.dto.LectureDto;
+import com.example.clonecoding.model.Banner;
+import com.example.clonecoding.model.Lecture;
+import com.example.clonecoding.repository.BannerRepository;
+import com.example.clonecoding.repository.LectureRepository;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,9 +14,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +23,10 @@ import java.util.List;
 class InflearnCrawlingTest {
 
     @Autowired
-    private MainHomeRepository mainHomeRepository;
+    private LectureRepository lectureRepository;
 
     @Autowired
-    private MainBannerRepository mainBannerRepository;
+    private BannerRepository bannerRepository;
 
     //강의 목록 크롤링시 페이지 순회 인덱스
     private static final int FIRST_PAGE_INDEX = 1;
@@ -39,7 +36,7 @@ class InflearnCrawlingTest {
     @Test
     void getHomeList() throws Exception {
 
-        List<MainLectureDto> list = null;
+        List<LectureDto> list = null;
         for (int i = FIRST_PAGE_INDEX; i <= LAST_PAGE_INDEX; i++) {
             final String URL = "https://www.inflearn.com/courses?order=seq&page=" + i;
             Document doc = null;
@@ -74,18 +71,17 @@ class InflearnCrawlingTest {
                 String level = element.getElementsByAttributeValue("class", "course_level").text();
                 String skill = element.getElementsByAttributeValue("class", "course_skills").text();
 
-                MainLecture mainHome = MainLecture.builder()
-                        .frontLectureImg(img)
-                        .frontLectureTitle(title)
-                        .frontInstructor(instructor)
-                        .frontOriginPrice(originPrice)
-                        .frontDiscountPrice(discountPrice)
-                        .backLectureTitle(title)
-                        .backDescription(description)
-                        .backLevel(level)
-                        .backSkill(skill)
+                Lecture lecture = Lecture.builder()
+                        .lectureImg(img)
+                        .title(title)
+                        .instructor(instructor)
+                        .originPrice(originPrice)
+                        .discountPrice(discountPrice)
+                        .description(description)
+                        .level(level)
+                        .skill(skill)
                         .build();
-                mainHomeRepository.save(mainHome);
+                lectureRepository.save(lecture);
             }
         }
     }
@@ -93,7 +89,7 @@ class InflearnCrawlingTest {
     @Test
     void getbannerList()  throws Exception {
 
-        MainBannerDto bannerDto = new MainBannerDto();
+        BannerDto bannerDto = new BannerDto();
         String URL = "https://www.inflearn.com";
         Document doc = null;
         try {
@@ -117,12 +113,12 @@ class InflearnCrawlingTest {
             bannerTitle = element.getElementsByAttributeValue("class", "admin_hero_title title is-3 bold").text();
             bannerText = element.getElementsByAttributeValue("class", "text is-1").text();
 
-            MainBanner mainBanner = MainBanner.builder()
+            Banner banner = Banner.builder()
                     .bannerImg(bannerImg)
                     .bannerTitle(bannerTitle)
                     .bannerText(bannerText)
                     .build();
-            mainBannerRepository.save(mainBanner);
+            bannerRepository.save(banner);
         }
     }
 }
