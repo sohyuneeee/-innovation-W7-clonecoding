@@ -7,6 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 public class MainLectureDto {
+    private Long id;
     private String frontLectureImg;
     private String frontLectureTitle;
     private String frontInstructor;

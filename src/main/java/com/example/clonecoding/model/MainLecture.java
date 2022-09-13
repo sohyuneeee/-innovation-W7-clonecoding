@@ -2,6 +2,7 @@ package com.example.clonecoding.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 @Builder
 @Entity
 public class MainLecture {
@@ -37,8 +39,7 @@ public class MainLecture {
     @Column
     private String backLectureTitle;
 
-
-    @Column(length = 500)
+    @Column
     private String backDescription;
 
     @Column

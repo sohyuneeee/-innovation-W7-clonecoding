@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Getter
 public class MainBannerDto {
+    private Long id;
     private String bannerImg;
     private String bannerTitle;
     private String bannerText;
