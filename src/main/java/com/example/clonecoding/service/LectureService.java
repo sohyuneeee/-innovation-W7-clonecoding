@@ -50,6 +50,7 @@ public class LectureService {
                         .bannerImg(banner.getBannerImg())
                         .bannerTitle(banner.getBannerTitle())
                         .bannerText(banner.getBannerText())
+                        .backGroundColor(banner.getBackGroundColor())
                         .build());
             } catch (Exception e) {
                 e.getStackTrace();

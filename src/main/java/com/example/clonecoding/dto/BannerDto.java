@@ -14,4 +14,5 @@ public class BannerDto {
     private String bannerImg;
     private String bannerTitle;
     private String bannerText;
+    private String backGroundColor;
 }
