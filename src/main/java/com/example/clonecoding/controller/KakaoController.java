@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 @RequestMapping("/api/oauth2")
 @AllArgsConstructor
@@ -16,10 +18,11 @@ public class KakaoController {
 
     private final KakaoMemberService kakaoMemberService;
 
+
     @GetMapping("/kakao")
-    public ResponseDto<?> getLogin(@RequestParam("code") String code) {
+    public ResponseDto<?> getLogin(@RequestParam("code") String code, HttpServletResponse response) {
         SocialTokenDto tokenDto = kakaoMemberService.getAccessToken(code);
-        return kakaoMemberService.saveMember(tokenDto.getAccess_token());
+        return kakaoMemberService.saveMember(tokenDto.getAccess_token(), response);
     }
 
 

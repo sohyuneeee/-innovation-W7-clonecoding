@@ -30,7 +30,7 @@ public enum ErrorCode {
 
     INVALID_ERROR("INVALID_ERROR", "에러 발생"),
 
-    USED_EMAIL("USED_EMAIL", "이미 가입한 이메일 입니다.");
+    USED_EMAIL("USED_EMAIL", "이미 동일한 이메일 주소로 가입된 정보가 있습니다.");
 
 //  NICKNAME_NOT_EXIST("NICKNAME_NOT_EXIST", "사용자를 찾을 수 없습니다.");
 

@@ -2,7 +2,10 @@ package com.example.clonecoding.service;
 
 import com.example.clonecoding.dto.ResponseDto;
 import com.example.clonecoding.dto.request.KakaoMemberRequestDto;
+import com.example.clonecoding.dto.response.MemberResponseDto;
 import com.example.clonecoding.jwt.SocialTokenDto;
+import com.example.clonecoding.jwt.TokenDto;
+import com.example.clonecoding.jwt.TokenProvider;
 import com.example.clonecoding.model.Authority;
 import com.example.clonecoding.model.ErrorCode;
 import com.example.clonecoding.model.Member;
@@ -23,6 +26,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 
@@ -31,6 +35,9 @@ public class KakaoMemberService {
 
     @Autowired
     private MemberRepository memberRepository;
+
+    @Autowired
+    private TokenProvider tokenProvider;
 
     @Value("${spring.security.oauth2.client.registration.kakao.authorization-grant-type}") String grant_type;
     @Value("${spring.security.oauth2.client.registration.kakao.client-id}") String client_id;
@@ -71,7 +78,7 @@ public class KakaoMemberService {
         return tokenDto;
     }
 
-    public ResponseDto<?> saveMember(String token) {
+    public ResponseDto<?> saveMember(String token, HttpServletResponse response) {
         RestTemplate rt = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
@@ -105,11 +112,23 @@ public class KakaoMemberService {
                     .provider("Kakao")
                     .authority(Authority.ROLE_USER).build();
             memberRepository.save(kakaoMember);
-        } else if (kakaoMember.getProvider() !="Kakao") {
+        } else if (!kakaoMember.getProvider().equals("Kakao")) {
             return new ResponseDto<>(null, ErrorCode.USED_EMAIL);
         }
 
-        return new ResponseDto<>(kakaoMember);
+
+        TokenDto tokenDto = tokenProvider.generateTokenDto(kakaoMember);
+        response.addHeader("Authorization", "Bearer " + tokenDto.getAccessToken());
+        response.addHeader("Refresh-Token", tokenDto.getRefreshToken());
+        response.addHeader("Access-Token-Expire-Time", tokenDto.getAccessTokenExpiresIn().toString());
+
+        MemberResponseDto responseDto = MemberResponseDto.builder()
+                .id(kakaoMember.getId())
+                .nickname(kakaoMember.getNickname())
+                .authority(kakaoMember.getAuthority()).build();
+
+
+        return new ResponseDto<>(responseDto);
     }
 
     @Transactional(readOnly = true)

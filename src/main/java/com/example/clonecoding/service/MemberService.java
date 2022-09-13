@@ -58,10 +58,7 @@ public class MemberService {
             return new ResponseDto<>(null,ErrorCode.PASSWORDS_NOT_MATCHED);
         }
 
-        TokenDto tokenDto = tokenProvider.generateTokenDto(member);
-        response.addHeader("Authorization", "Bearer " + tokenDto.getAccessToken());
-        response.addHeader("Refresh-Token", tokenDto.getRefreshToken());
-        response.addHeader("Access-Token-Expire-Time", tokenDto.getAccessTokenExpiresIn().toString());
+        putToken(member, response);
 
         MemberResponseDto responseDto = MemberResponseDto.builder()
                 .id(member.getId())
@@ -87,5 +84,13 @@ public class MemberService {
     public Member isPresentMember(String email) {
         Optional<Member> optionalMember = memberRepository.findByEmail(email);
         return optionalMember.orElse(null);
+    }
+
+    @Transactional
+    public void putToken(Member member, HttpServletResponse response) {
+        TokenDto tokenDto = tokenProvider.generateTokenDto(member);
+        response.addHeader("Authorization", "Bearer " + tokenDto.getAccessToken());
+        response.addHeader("Refresh-Token", tokenDto.getRefreshToken());
+        response.addHeader("Access-Token-Expire-Time", tokenDto.getAccessTokenExpiresIn().toString());
     }
 }
