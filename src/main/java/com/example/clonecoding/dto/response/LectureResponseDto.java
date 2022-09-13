@@ -9,23 +9,25 @@ import lombok.Getter;
 public class LectureResponseDto {
 
     private final Long id;
-    private final String imageFile;
+
+    private final String lectureImg;
     private final String title;
     private final String description;
-    private final String lecturer;
-    private final int price;
+
+    private final String instructor;
+    private final String originPrice;
+
+    private final String discountPrice;
     private final int star;
-    private final String reviewCnt;
 
     public LectureResponseDto(Lecture lecture) {
         this.id = lecture.getId();
         this.title = lecture.getTitle();
-        this.lecturer = lecture.getLecturer();
-        this.price = lecture.getPrice();
+        this.instructor = lecture.getInstructor();
+        this.originPrice = lecture.getOriginPrice();
+        this.discountPrice = lecture.getDiscountPrice();
         this.star = lecture.getStar();
         this.description = lecture.getDescription();
-        this.imageFile = lecture.getImageFile();
-        this.reviewCnt = lecture.getReviewCnt();
-
+        this.lectureImg = lecture.getLectureImg();
     }
 }
