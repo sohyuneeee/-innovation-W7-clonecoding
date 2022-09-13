@@ -1,6 +1,7 @@
 package com.example.clonecoding.service;
 
 import com.example.clonecoding.dto.BannerDto;
+import com.example.clonecoding.dto.response.LectureResponseDto;
 import com.example.clonecoding.model.Banner;
 import com.example.clonecoding.model.Lecture;
 import com.example.clonecoding.dto.LectureDto;
@@ -56,6 +57,11 @@ public class LectureService {
             }
         }
         return bannerList;
+    }
+
+    public LectureResponseDto get(Long lectureId) {
+        Lecture lecture = lectureRepository.findByLectureId(lectureId);
+        return new LectureResponseDto(lecture);
     }
 }
 
