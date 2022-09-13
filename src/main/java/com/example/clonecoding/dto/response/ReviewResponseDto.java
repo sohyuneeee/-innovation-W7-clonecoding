@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ReviewResponseDto {
 
+    private Long lectureId;
     private Long id;
     private String content;
     private String nickname;
@@ -21,6 +22,7 @@ public class ReviewResponseDto {
     private LocalDateTime createdAt;
 
     public ReviewResponseDto(Review review) {
+        this.lectureId = review.getLecture().getId();
         this.id = review.getId();
         this.nickname = review.getNickname();
         this.content= review.getContent();
