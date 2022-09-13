@@ -30,4 +30,6 @@ public class Banner {
     @Column
     private String bannerText;
 
+    @Column
+    private String backGroundColor;
 }
