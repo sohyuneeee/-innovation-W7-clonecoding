@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Builder
 @Entity
-public class MainBanner {
+public class Banner {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;

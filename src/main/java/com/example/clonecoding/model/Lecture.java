@@ -1,43 +1,52 @@
 package com.example.clonecoding.model;
 
-import com.example.clonecoding.dto.request.LectureRequestDto;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
-@Entity
-@Getter
+@AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Builder
+@Entity
 public class Lecture {
-
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
 
+    @NotNull
+    @Column
+    private String lectureImg;
+
+    @NotNull
+    @Column
     private String title;
 
-    private String lecturer;
-
-    private int price;
-
-    private String imageFile;
-
-    private String description;
-
+    @Column
     private int star;
 
-    private String reviewCnt;
+    @NotNull
+    @Column
+    private String instructor;
 
-    public Lecture(LectureRequestDto requestDto) {
-        this.title = requestDto.getTitle();
-        this.lecturer = requestDto.getLecturer();
-        this.price = requestDto.getPrice();
-        this.star = requestDto.getStar();
-        this.description = requestDto.getDescription();
-        this.imageFile = requestDto.getImageFile();
-        this.reviewCnt = requestDto.getReviewCnt();
-    }
+    @Column
+    private String originPrice;
+
+    @Column
+    private String discountPrice;
+
+    @Column
+    private String description;
+
+    @Column
+    private String level;
+
+    @Column
+    private String skill;
 
 
 }
