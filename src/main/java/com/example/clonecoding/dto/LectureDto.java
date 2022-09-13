@@ -6,7 +6,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class MainLectureDto {
+public class LectureDto {
+    private Long id;
     private String frontLectureImg;
     private String frontLectureTitle;
     private String frontInstructor;
