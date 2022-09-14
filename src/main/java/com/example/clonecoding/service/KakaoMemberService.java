@@ -127,7 +127,6 @@ public class KakaoMemberService {
                 .nickname(kakaoMember.getNickname())
                 .authority(kakaoMember.getAuthority()).build();
 
-
         return new ResponseDto<>(responseDto);
     }
 
