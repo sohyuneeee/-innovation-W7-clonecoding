@@ -1,7 +1,7 @@
 package com.example.clonecoding.jwt;
 
 import com.example.clonecoding.dto.ResponseDto;
-import com.example.clonecoding.model.ErrorCode;
+import com.example.clonecoding.enums.ErrorCode;
 import com.example.clonecoding.service.UserDetailsServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;

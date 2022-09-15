@@ -1,5 +1,6 @@
-package com.example.clonecoding.model;
+package com.example.clonecoding.exception;
 
+import com.example.clonecoding.enums.ErrorCode;
 import lombok.Getter;
 
 @Getter

@@ -6,8 +6,8 @@ import com.example.clonecoding.jwt.TokenDto;
 import com.example.clonecoding.dto.request.MemberRequestDto;
 
 import com.example.clonecoding.jwt.TokenProvider;
-import com.example.clonecoding.model.Authority;
-import com.example.clonecoding.model.ErrorCode;
+import com.example.clonecoding.enums.Authority;
+import com.example.clonecoding.enums.ErrorCode;
 import com.example.clonecoding.model.Member;
 import com.example.clonecoding.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;

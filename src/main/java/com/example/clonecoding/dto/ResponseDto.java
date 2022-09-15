@@ -1,6 +1,6 @@
 package com.example.clonecoding.dto;
 
-import com.example.clonecoding.model.ErrorCode;
+import com.example.clonecoding.enums.ErrorCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

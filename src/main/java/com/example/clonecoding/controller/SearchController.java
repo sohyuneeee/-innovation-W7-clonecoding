@@ -1,7 +1,7 @@
 package com.example.clonecoding.controller;
 
 import com.example.clonecoding.dto.ResponseDto;
-import com.example.clonecoding.model.ErrorCode;
+import com.example.clonecoding.enums.ErrorCode;
 import com.example.clonecoding.model.Lecture;
 import com.example.clonecoding.service.SearchService;
 import lombok.RequiredArgsConstructor;

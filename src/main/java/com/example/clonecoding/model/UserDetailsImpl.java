@@ -1,5 +1,6 @@
 package com.example.clonecoding.model;
 
+import com.example.clonecoding.enums.Authority;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

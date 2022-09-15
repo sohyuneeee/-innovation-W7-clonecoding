@@ -3,7 +3,7 @@ package com.example.clonecoding.controller;
 import com.example.clonecoding.dto.ResponseDto;
 import com.example.clonecoding.dto.request.ReviewRequestDto;
 import com.example.clonecoding.dto.response.ReviewResponseDto;
-import com.example.clonecoding.model.ErrorCode;
+import com.example.clonecoding.enums.ErrorCode;
 import com.example.clonecoding.service.ReviewService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

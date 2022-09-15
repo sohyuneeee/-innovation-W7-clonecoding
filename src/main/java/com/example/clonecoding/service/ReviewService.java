@@ -2,6 +2,8 @@ package com.example.clonecoding.service;
 
 import com.example.clonecoding.dto.request.ReviewRequestDto;
 import com.example.clonecoding.dto.response.ReviewResponseDto;
+import com.example.clonecoding.enums.ErrorCode;
+import com.example.clonecoding.exception.CustomException;
 import com.example.clonecoding.model.*;
 import com.example.clonecoding.repository.LectureRepository;
 import com.example.clonecoding.repository.ReviewRepository;
@@ -15,7 +17,6 @@ import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -53,20 +54,6 @@ public class ReviewService {
 
         return new ReviewResponseDto(review);
 
-//        Review review = Review.builder()
-//                .member(member)
-//                .lecture(lecture)
-//                .star(requestDto.getStar())
-//                .content(requestDto.getContent())
-//                .build();
-//        reviewRepository.save(review);
-//
-//        return ReviewResponseDto.builder()
-//                .id(review.getId())
-//                .content(review.getContent())
-//                .star(review.getStar())
-//                .createdAt(review.getCreatedAt())
-//                .build();
 
 
 
@@ -107,11 +94,6 @@ public class ReviewService {
         reviewRepository.delete(review);
     }
 
-//    @Transactional(readOnly = true)
-//    public Lecture isPresentLecture(Long lectureId) {
-//        Optional<Lecture> optionalLecture = lectureRepository.findById(lectureId);
-//        return optionalLecture.orElse(null);
-//    }
 
 
 

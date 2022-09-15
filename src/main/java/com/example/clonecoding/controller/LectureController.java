@@ -3,7 +3,7 @@ package com.example.clonecoding.controller;
 
 import com.example.clonecoding.dto.ResponseDto;
 import com.example.clonecoding.dto.response.LectureResponseDto;
-import com.example.clonecoding.model.ErrorCode;
+import com.example.clonecoding.enums.ErrorCode;
 import com.example.clonecoding.service.LectureService;
 import com.example.clonecoding.dto.BannerDto;
 import com.example.clonecoding.dto.LectureDto;

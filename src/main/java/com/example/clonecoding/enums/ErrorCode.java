@@ -1,4 +1,4 @@
-package com.example.clonecoding.model;
+package com.example.clonecoding.enums;
 
 
 import lombok.Getter;

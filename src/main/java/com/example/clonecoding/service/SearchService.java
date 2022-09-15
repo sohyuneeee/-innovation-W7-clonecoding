@@ -22,10 +22,4 @@ public class SearchService {
     }
 
 
-//    @Transactional
-//    public LectureResponseDto createLecture(LectureRequestDto requestDto) {
-//        Lecture lecture = new Lecture(requestDto);
-//        lecture = lectureRepository.save(lecture);
-//        return new LectureResponseDto(lecture);
-//    }
 }
